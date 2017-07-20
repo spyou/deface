@@ -36,7 +36,7 @@ module Deface
     initializer "deface.tweak_eager_loading", :before => :set_load_path do |app|
 
       # application
-      app.config.eager_load_paths.reject! {|path| path.to_s  =~ /app\/overrides\z/ }
+      app.config.eager_load_paths = app.config.eager_load_paths.reject {|path| path.to_s  =~ /app\/overrides\z/ }
 
       # railites / engines / extensions
       railties = if Rails.version >= "4.0"
